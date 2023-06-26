@@ -1,3 +1,229 @@
-h1 {
-  color: blue;
+:root{
+  --colorPrimary: #d7d7db;
+  --colorLink: #8f8fac;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+header, footer{
+  align-items: baseline;
+  background: url('../img/bg.jpg') repeat;
+  color: var(--colorPrimary);
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+  height: 30vh;
+}
+
+footer {
+  align-items: flex-end;
+  padding-bottom: 2rem;
+}
+
+main{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background: var(--colorPrimary);
+}
+
+.conteiner{
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
+
+.email{
+  color: var(--colorPrimary);
+  font-weight: bold;
+}
+
+.logo{
+  width: 4rem;
+}
+
+nav a {
+  color: var(--colorPrimary);
+  margin-left: 0.5rem;
+}
+
+nav a:hover{
+  filter: brightness(1.5);
+}
+
+nav a img{
+  width: 1.5rem;
+}
+
+form{
+  background: white;
+  border-radius: 1rem;
+  margin: 0 auto;
+  position: relative;
+  top: -135px;
+  max-width: 650px;
+  width: 100%;
+}
+
+form legend{
+  font-size: 2rem;
+  padding: 2rem;
+  background: var(--colorPrimary);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.form__conteiner{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+#ano, #mes, #dia, #tipo{
+  width: 49.33%;
+}
+
+form select, form input{
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  background: var(--colorPrimary);
+  border-radius: 1rem;
+  border: none;
+}
+
+form button{
+  background: url('../img/bg.jpg') repeat;
+  border: none;
+  border-radius: 1rem;
+  color: var(--colorPrimary);
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0.25rem;
+  transition: all ease-in-out .1s;
+}
+
+form button:hover{
+  filter: brightness(1.5);
+}
+
+.btnSearch{
+  vertical-align: middle;
+  width: 42px;
+  filter: invert(1);
+}
+
+table, th, td {
+  border-top: 1px solid #6b6b6b;
+  border-bottom: 1px solid #414141;
+}
+
+table {
+  border-collapse: collapse;
+  margin: auto;
+}
+
+th, td{
+  padding: 10px;
+  text-align: center;
+  width: 200px;
+}
+
+@media screen and (max-width: 1024px){
+  .conteiner{
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .conteiner{
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  
+  form{
+    top: -125px;
+  }
+
+  form legend{
+    font-size: 1.5rem;
+  }
+
+  .email{
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 510px){
+  .conteiner{
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  header, footer{
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  footer{
+    justify-content: space-between;
+  }
+
+  form{
+    top: -120px;
+  }
+
+  .form__conteiner{
+    padding: 1.825rem 0.825rem;
+  }
+
+  form legend{
+    font-size: 1.25rem;
+    padding: 2rem 0.825rem;
+  }
+
+  form select, form input{
+    font-size: 1rem;
+    padding: 0.5rem 0.25rem;
+  }
+}
+
+@media screen and (max-width: 400px){
+  .conteiner{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  form{
+    top: -115px;
+  }
+
+  form legend{
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  #ano, #mes, #dia, #tipo{
+    width: 48%;
+  }
+}
+
+@media screen and (max-height: 770px){
+  header, footer{
+    height: 40vh;
+  }
 }
