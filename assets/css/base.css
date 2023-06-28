@@ -151,6 +151,7 @@ th, td{
   font-size: 1.5rem;
   text-align: center;
   width: 60%;
+  box-shadow: 5px 5px 100px 400px #000000a8;
 }
 
 .text__success{
@@ -186,12 +187,14 @@ th, td{
   background: var(--colorLink);
 }
 
-.btn__success{
-  color: green;
+#modal-footer .btn__success{
+  background: green;
+  color: white;
 }
 
-.btn__danger{
-  color: red;
+#modal-footer .btn__danger{
+  background: red;
+  color: white;
 }
 
 .fade{

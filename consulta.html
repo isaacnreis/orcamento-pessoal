@@ -16,10 +16,10 @@
   <link rel="stylesheet" href="./assets/css/base.css">
 
   <!-- My Scripts -->
-  <script type="module" src="./app.js"></script>
+  <script src="./app.js"></script>
 
 </head>
-<body>
+<body onload="carriesExpenses()">
 
   <header class="conteiner">
 
@@ -100,7 +100,8 @@
         </tr>
       </thead>
 
-      <tbody>
+      <tbody id="expenseRecord">
+        
       </tbody>
     </table>
 

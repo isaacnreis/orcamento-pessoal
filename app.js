@@ -41,53 +41,88 @@ class Db {
     localStorage.setItem('id', id)
   }
 
-}
+  recoverAllData(){
 
-const db = new Db()
+    // Array das despesas
+    let expenses = [];
 
-const form = document.querySelector('form');
+    let id = localStorage.getItem('id');
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
+    // Recupera todas as despesas
+    for(let i = 1; i <= id; i++){
 
-  const year = document.getElementById('year');
-  const month = document.getElementById('month');
-  const day = document.getElementById('day');
-  const type = document.getElementById('type');
-  const description = document.getElementById('description');
-  const value = document.getElementById('value');
+      // Recupera a despesa
+      let expense = JSON.parse(localStorage.getItem(i));
 
-  const expense = new Expense(
-    year.value, 
-    month.value, 
-    day.value, 
-    type.value, 
-    description.value, 
-    value.value
-  )
+      // Caso exista o caso da despesa ter sido removida e valor null
+      // Vamos pular
+      if(expense == null){
+        continue
+      }
 
-  if(!expense.validateData()){
-    showModal(
-      'Erro na inclusão do registro',
-      'text__danger',
-      'Erro na gravação, verifique se todos os campos foram preenchidos corretamente!',
-      'btn__danger',
-      'Voltar e corrigir'
-    )
-    return
+      expenses.push(expense);
+    }
+    
+    return expenses;
   }
 
-  showModal(
-    'Registro inserido com sucesso',
-    'text__success',
-    'Despesa foi cadastrada com sucesso!',
-    'btn__success',
-    'Voltar'
-  )
+}
 
-  db.record(expense)
+const db = new Db();
 
-});
+if(location.href == 'http://127.0.0.1:5500/index.html'){
+
+  const formAdd = document.getElementById('formAdd');
+
+  formAdd.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const year = document.getElementById('year');
+    const month = document.getElementById('month');
+    const day = document.getElementById('day');
+    const type = document.getElementById('type');
+    const description = document.getElementById('description');
+    const value = document.getElementById('value');
+
+    const expense = new Expense(
+      year.value, 
+      month.value, 
+      day.value, 
+      type.value, 
+      description.value, 
+      value.value
+    );
+
+    if(!expense.validateData()){
+      showModal(
+        'Erro na inclusão do registro',
+        'text__danger',
+        'Erro na gravação, verifique se todos os campos foram preenchidos corretamente!',
+        'btn__danger',
+        'Voltar e corrigir'
+      );
+
+      return;
+    }
+
+    showModal(
+      'Registro inserido com sucesso',
+      'text__success',
+      'Despesa foi cadastrada com sucesso!',
+      'btn__success',
+      'Voltar'
+    );
+
+   db.record(expense);
+
+    year.value = '';
+    month.value = '';
+    day.value = '';
+    type.value = '';
+    description.value = '';
+    value.value = '';
+  });
+}
 
 function showModal(title, titleClass, text, buttonClass, button){
 
@@ -103,4 +138,42 @@ function showModal(title, titleClass, text, buttonClass, button){
 
   document.querySelector('.modal').style.display = 'flex';
   document.querySelector('.modal').innerHTML = content;
+}
+
+function carriesExpenses(){
+
+  // Recuperando um array com todas as despesas registradas
+  let expenses = db.recoverAllData();
+
+  // Elemento tbody html
+  const expenseRecord = document.getElementById('expenseRecord');
+
+  // Passando por cada elemento do array de despesas
+  // Colocando no hmtl em seus respectivos campos
+  expenses.forEach(expense => {
+    
+    // Inserindo tr
+    let line = expenseRecord.insertRow();
+
+    // Inserindo th
+    line.insertCell(0).innerHTML = `${expense.day}/${expense.month}/${expense.year}`; //Data
+
+    // Ajustando valor do tipo da despesa
+    switch(expense.type){
+      case '1': expense.type = 'Alimentção'
+        break
+      case '2': expense.type = 'Educação'
+        break
+      case '3': expense.type = 'Lazer'
+        break
+      case '4': expense.type = 'Saúde'
+        break
+      case '5': expense.type = 'Transporte'
+        break
+    }
+
+    line.insertCell(1).innerHTML = expense.type; //Tipo
+    line.insertCell(2).innerHTML = expense.description; //Descrição
+    line.insertCell(3).innerHTML = parseFloat(expense.value).toFixed(2); //Valor
+  })
 }
