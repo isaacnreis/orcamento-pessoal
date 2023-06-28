@@ -217,6 +217,12 @@ th, td{
     padding-left: 6rem;
     padding-right: 6rem;
   }
+
+  .modal{
+    top: 430px;
+    left: 15vw;
+    width: 70%;
+  }
 }
 
 @media screen and (max-width: 768px){
@@ -237,6 +243,16 @@ th, td{
     display: none;
   }
 
+  .modal{
+    top: 400px;
+    left: 12vw;
+    width: 75%;
+  }
+
+  .btn__remove{
+    font-size: 1.25rem;
+    padding: 0.25rem 0.5rem;
+  }
 }
 
 @media screen and (max-width: 510px){
@@ -274,6 +290,25 @@ th, td{
     font-size: 1rem;
     padding: 0.5rem 0.25rem;
   }
+
+  .modal{
+    top: 380px;
+    left: 7.5vw;
+    font-size: 1.25rem;
+    width: 85%;
+  }
+  
+  th, td{
+    padding: 4px;
+    text-align: center;
+    width: 150px;
+    font-size: 0.825rem;
+  }
+
+  .btn__remove{
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+  }
 }
 
 @media screen and (max-width: 400px){
@@ -293,6 +328,31 @@ th, td{
 
   #year, #month, #day, #type{
     width: 48%;
+  }
+
+  .modal{
+    top: 350px;
+    left: 2.5vw;
+    padding: 1rem;
+    font-size: 1rem;
+    width: 95%;
+  }
+
+  #modal-footer button {
+    font-size: 0.825rem;
+    padding: 0.5rem;
+  }
+
+  th, td{
+    padding: 2px;
+    text-align: center;
+    width: 120px;
+    font-size: 0.75rem;
+  }
+
+  .btn__remove{
+    font-size: 0.825rem;
+    padding: 0.25rem;
   }
 }
 
