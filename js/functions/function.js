@@ -59,7 +59,7 @@ export function carriesExpenses(expenses = [], filter = false, db){
     btnRemove.className = 'btn__remove';
     btnRemove.id = `id__expense-${expense.id}`
     line.insertCell(4).append(btnRemove);
-    btnRemove.onclick = function(){
+    btnRemove.onclick = function(db){
       let id = btnRemove.id.replace('id__expense-', '');
 
       db.remove(id)

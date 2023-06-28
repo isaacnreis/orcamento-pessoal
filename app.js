@@ -87,7 +87,7 @@ if(location.href == 'https://isaacnreis.github.io/orcamento-pessoal/consulta.htm
   
     let expenses = db.search(expense)
   
-    carriesExpenses(expenses, true);
+    carriesExpenses(expenses, true, db);
   
   })
 
