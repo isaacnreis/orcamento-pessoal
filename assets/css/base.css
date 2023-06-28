@@ -201,6 +201,17 @@ th, td{
   display: none;
 }
 
+.btn__remove{
+  background: red;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+}
+
 @media screen and (max-width: 1024px){
   .conteiner{
     padding-left: 6rem;

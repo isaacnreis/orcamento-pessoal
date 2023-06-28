@@ -60,6 +60,7 @@ class Db {
         continue
       }
 
+      expense.id = i;
       expenses.push(expense);
     }
     
@@ -104,7 +105,9 @@ class Db {
     return filteredExpenses;
   }
 
-
+  remove(id){
+    localStorage.removeItem(id)
+  }
 }
 
 const db = new Db();
@@ -217,32 +220,50 @@ function carriesExpenses(expenses = [], filter = false){
     line.insertCell(1).innerHTML = expense.type; //Tipo
     line.insertCell(2).innerHTML = expense.description; //Descrição
     line.insertCell(3).innerHTML = parseFloat(expense.value).toFixed(2); //Valor
+
+    // Criando botão de exclusão
+    let btnRemove = document.createElement('button');
+    btnRemove.innerText = 'X';
+    btnRemove.className = 'btn__remove';
+    btnRemove.id = `id__expense-${expense.id}`
+    line.insertCell(4).append(btnRemove);
+    btnRemove.onclick = function(){
+      let id = btnRemove.id.replace('id__expense-', '');
+
+      db.remove(id)
+
+      window.location.reload()
+    }
+
   })
 }
 
-const searchForm = document.getElementById('searchForm');
+if(location.href == 'http://127.0.0.1:5500/consulta.html'){
+  const searchForm = document.getElementById('searchForm');
 
-searchForm.addEventListener('submit', (event) => {
-  event.preventDefault();
+  searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+  
+    const year = document.getElementById('year');
+    const month = document.getElementById('month');
+    const day = document.getElementById('day');
+    const type = document.getElementById('type');
+    const description = document.getElementById('description');
+    const value = document.getElementById('value');
+  
+    const expense = new Expense(
+      year.value, 
+      month.value, 
+      day.value, 
+      type.value, 
+      description.value, 
+      value.value
+    );
+  
+    let expenses = db.search(expense)
+  
+    carriesExpenses(expenses, true);
+  
+  })
 
-  const year = document.getElementById('year');
-  const month = document.getElementById('month');
-  const day = document.getElementById('day');
-  const type = document.getElementById('type');
-  const description = document.getElementById('description');
-  const value = document.getElementById('value');
-
-  const expense = new Expense(
-    year.value, 
-    month.value, 
-    day.value, 
-    type.value, 
-    description.value, 
-    value.value
-  );
-
-  let expenses = db.search(expense)
-
-  carriesExpenses(expenses, true);
-
-})
+}
