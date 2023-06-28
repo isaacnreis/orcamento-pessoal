@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="./assets/css/base.css">
 
   <!-- My Scripts -->
-  <script src="./app.js"></script>
+  <script defer src="./app.js"></script>
 
 </head>
 <body onload="carriesExpenses()">
@@ -36,7 +36,7 @@
 
   <main class="conteiner">
 
-    <form>
+    <form id="searchForm">
       <legend>Consulta de despesas</legend>
 
       <div class="form__conteiner">
@@ -68,7 +68,7 @@
           <input type="text" placeholder="Dia" id="day" />
   
           <select id="type">
-            <option>Tipo</option>
+            <option value="">Tipo</option>
             <option value="1">Alimentação</option>
             <option value="2">Educação</option>
             <option value="3">Lazer</option>
