@@ -88,7 +88,7 @@ form legend{
   margin: 0 auto;
 }
 
-#ano, #mes, #dia, #tipo{
+#year, #month, #day, #type{
   width: 49.33%;
 }
 
@@ -136,6 +136,66 @@ th, td{
   padding: 10px;
   text-align: center;
   width: 200px;
+}
+
+.modal{
+  background: white;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: absolute;
+  top: 430px;
+  left: 20vw;
+  padding: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 60%;
+}
+
+.text__success{
+  color: green;
+}
+
+.text__danger{
+  color: red;
+}
+
+.close{
+  border-radius: 1rem;
+  border: none;
+  background: var(--colorPrimary);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 1.5rem;
+}
+
+#modal-footer button {
+  border-radius: 1rem;
+  border: none;
+  background: var(--colorPrimary);
+  cursor: pointer;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+}
+
+.close:hover, #modal-footer button:hover{
+  background: var(--colorLink);
+}
+
+.btn__success{
+  color: green;
+}
+
+.btn__danger{
+  color: red;
+}
+
+.fade{
+  display: none;
 }
 
 @media screen and (max-width: 1024px){
@@ -217,7 +277,7 @@ th, td{
     text-align: center;
   }
 
-  #ano, #mes, #dia, #tipo{
+  #year, #month, #day, #type{
     width: 48%;
   }
 }
