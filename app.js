@@ -5,7 +5,7 @@ import { showModal, carriesExpenses } from "./js/functions/function.js";
 
 const db = new Db();
 
-if(location.href == 'http://127.0.0.1:5500/index.html'){
+if(location.href == 'https://isaacnreis.github.io/orcamento-pessoal/index.html' || location.href == 'https://isaacnreis.github.io/orcamento-pessoal/'){
 
   const formAdd = document.getElementById('formAdd');
 
@@ -59,7 +59,7 @@ if(location.href == 'http://127.0.0.1:5500/index.html'){
   });
 }
 
-if(location.href == 'http://127.0.0.1:5500/consulta.html'){
+if(location.href == 'https://isaacnreis.github.io/orcamento-pessoal/consulta.html'){
 
   const body = document.querySelector('body');
   body.addEventListener('load', carriesExpenses( undefined, undefined, db))
